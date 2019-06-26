@@ -1,0 +1,43 @@
+{
+  "name": "ignition-flow",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "axios": "^0.17.1",
+    "bcrypt": "^2.0.1",
+    "bluebird": "^3.5.3",
+    "cors": "^2.8.4",
+    "cote": "^0.16.1",
+    "ejs": "^2.3.4",
+    "got": "^8.3.2",
+    "include-all": "^1.0.0",
+    "joi": "^13.2.0",
+    "jsonwebtoken": "^7.4.3",
+    "loadash": "^1.0.0",
+    "nodemailer": "^4.4.0",
+    "rc": "1.0.1",
+    "sails": "^0.12.14",
+    "sails-disk": "~0.10.9",
+    "sails-hook-autoreload": "^0.14.3",
+    "sails-mongo": "^1.0.1",
+    "sha1": "^1.1.1",
+    "stompit": "^0.25.0",
+    "unirest": "^0.5.1",
+    "uuid": "^3.1.0",
+    "xml2js": "^0.4.19"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gideonvm/ignition-flow.git"
+  },
+  "author": "gideonvm",
+  "license": ""
+}

@@ -1,0 +1,35 @@
+pipelines:
+  branches:
+    master:
+    - step:
+        script:
+          - rsync -avvzc --del . $SSH_USER@$SSH_HOST:/opt/$BITBUCKET_REPO_SLUG
+          - ssh -tt $SSH_USER@$SSH_HOST << EOF
+          - cd /opt/$BITBUCKET_REPO_SLUG
+          - pm2 stop $BITBUCKET_REPO_SLUG
+          - npm install
+          - pm2 start $BITBUCKET_REPO_SLUG
+          - exit $?
+          - EOF
+    develop:
+    - step:
+        script:
+          - rsync -avvzc --del . $STAGING_USER@$BITBUCKET_REPO_SLUG.$STAGING_HOST:/opt/$BITBUCKET_REPO_SLUG
+          - ssh -tt $STAGING_USER@$BITBUCKET_REPO_SLUG.$STAGING_HOST << EOF
+          - cd /opt/$BITBUCKET_REPO_SLUG
+          - pm2 stop $BITBUCKET_REPO_SLUG
+          - npm install
+          - pm2 start $BITBUCKET_REPO_SLUG
+          - exit $?
+          - EOF
+    gideon:
+    - step:
+        script:
+          - rsync -avvzc --del . $STAGING_USER@$BITBUCKET_REPO_SLUG.$STAGING_HOST:/opt/$BITBUCKET_REPO_SLUG-$BITBUCKET_BRANCH
+          - ssh -tt $STAGING_USER@$BITBUCKET_REPO_SLUG.$STAGING_HOST << EOF
+          - cd /opt/$BITBUCKET_REPO_SLUG-$BITBUCKET_BRANCH
+          - npm install
+          - pm2 stop $BITBUCKET_REPO_SLUG-$BITBUCKET_BRANCH
+          - pm2 start $BITBUCKET_REPO_SLUG-$BITBUCKET_BRANCH
+          - exit $?
+          - EOF
