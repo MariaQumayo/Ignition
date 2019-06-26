@@ -1,0 +1,202 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Notifications Manager &emsp; </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/notifications/list">
+            <i class="fa fa-list">
+            </i>
+            View
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/notifications/add">
+            <i class="fa fa-plus-circle">
+            </i>
+            Create
+          </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/notifications/resolved">
+            <i class="fa fa-check-square">
+                </i>
+               Resolved
+            </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-1">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <i class="fa fa-user"></i>
+                  </a>
+                </li>
+         <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="/Auth/logout">
+                  <i class="fa fa-sign-out" style="color:#109c8f"></i>
+                Sign out
+              </a>
+            </li>
+          </ul>
+      </form>
+    </div>
+  </nav>
+
+<br><br><br>
+<table class="table table-striped">
+    <thead class="thead-inverse" style="height:40%">
+        <tr style="height:40%">
+            <th> ID</th>
+            <th> Category</th>
+            <th> Description </th>
+            <th> Status </th>
+            <th> Created Date </th>
+            <th> Action &emsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% notifications.forEach(function(notification){ %>
+        <tr>
+          <td><%= notification.id %></td>
+          <td><%= notification.title %></td>
+          <td><%= notification.body %></td>
+          <td><%= notification.status %></td>
+          <td><%= notification.createdAt %></td>
+          <td>
+            <a href="/notifications/edit/<%= notification.id %>" class="fa fa-pencil" style="font-size: 23px; color:#c6c6c6"></a>
+            <form method="post" class="d-inline" action="/notifications/delete/<%= notification.id %>">
+                <button type="submit" value="Delete" style="border: none; background: transparent" Onclick="return ConfirmDelete()" ><a class="fa fa-trash" style="font-size: 23px; color: #c6c6c6"></a></button>
+          </form>
+          </td>
+        <% }) %>
+    </tbody>
+</table> 
+<br><br><br>
+<script>
+function ConfirmDelete() {
+  return confirm("Are you sure you want to delete?");
+}
+</script> 
+
+<style>
+    @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+  
+  .navbar-icon-top .navbar-nav .nav-link > .fa {
+    position: relative;
+    width: 36px;
+    font-size: 24px;
+  }
+  
+  .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+    font-size: 0.75rem;
+    position: absolute;
+    right: 0;
+    font-family: sans-serif;
+  }
+  
+  .navbar-icon-top .navbar-nav .nav-link > .fa {
+    top: 3px;
+    line-height: 12px;
+  }
+  
+  .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+    top: -10px;
+  }
+  
+  @media (min-width: 576px) {
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+      text-align: center;
+      display: table-cell;
+      height: 70px;
+      vertical-align: middle;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+      display: block;
+      width: 48px;
+      margin: 2px auto 4px auto;
+      top: 0;
+      line-height: 24px;
+    }
+  
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+      top: -7px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+      text-align: center;
+      display: table-cell;
+      height: 70px;
+      vertical-align: middle;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+      display: block;
+      width: 48px;
+      margin: 2px auto 4px auto;
+      top: 0;
+      line-height: 24px;
+    }
+  
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+      top: -7px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+      text-align: center;
+      display: table-cell;
+      height: 70px;
+      vertical-align: middle;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+      display: block;
+      width: 48px;
+      margin: 2px auto 4px auto;
+      top: 0;
+      line-height: 24px;
+    }
+  
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+      top: -7px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+      text-align: center;
+      display: table-cell;
+      height: 70px;
+      vertical-align: middle;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+      display: block;
+      width: 48px;
+      margin: 2px auto 4px auto;
+      top: 0;
+      line-height: 24px;
+    }
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+      top: -7px;
+    }
+  }
+  </style>
+

@@ -1,0 +1,267 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Notifications Manager &emsp; </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/notifications/list">
+            <i class="fa fa-list">
+            </i>
+            View
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/notifications/add">
+            <i class="fa fa-plus-circle">
+            </i>
+            Create
+          </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/notifications/resolved">
+                <i class="fa fa-check-square">
+                    </i>
+                Resolved
+            </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-1">
+         <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="/Auth/logout">
+                  <i class="fa fa-sign-out" style="color:#109c8f"></i>
+                Sign out
+              </a>
+            </li>
+          </ul>
+      </form>
+    </div>
+  </nav>
+<form method="post" action="/notifications/update/<%= notification.id %>" class="formStyle">
+    <h1>Edit Notification</h1>
+        <div class="form-group" >
+          <label for="title">Category</label>
+          <select class="form-control" name="title" type="text" required>
+              <option value="<%= notification.title %>" > <%= notification.title %> </option>
+              <option value="CellC LTE" > CellC LTE </option>
+              <option value="Ignite Fibre"> Ignite Fibre </option>
+              <option value="Essentials Fibre"> Essentials Fibre </option>
+              <option value="Neobraodband"> Neobraodband</option>
+              <option value="SD Wan"> SD Wan </option>
+              <option value="Capped DSL"> Capped DSL </option>
+              <option value="Uncapped DSL"> Uncapped DSL </option>
+              <option value="DSL-Add on"> DSL Add-on</option>
+              <option value="Hosted Premium Email "> Hosted Premium Email </option>
+              <option value="Exchange Online"> Exchange Online </option>
+              <option value="Archiving"> Archiving </option>
+              <option value="Cloud PBX "> Cloud PBX </option>
+              <option value="Office365 Small Business"> Office365 Small Business </option>
+              <option value="Office365 Enterprise"> Office365 Enterprise </option>
+              <option value="Cloud Backup"> Cloud Backup </option>
+              <option value="Sophos"> Sophos </option>
+              <option value="Site Builder"> Site Builder</option>
+              <option value="Domains"> Domains </option>
+              <option value="Windows Hosting"> Windows Hosting </option>
+              <option value="Lunix Hosting"> Lunix Hosting </option>
+              <option value="Cloud Server"> Cloud Server </option>
+            </select>
+        </div>
+        <div class="form-group">
+        <label for="body">Body</label>
+        <textarea class="form-control" rows="5" name="body"><%= notification.body %></textarea>
+        </div>
+       <div class="form-group" >
+            <label for="status">Status</label>
+            <select class="form-control" name="status" type="text" required>
+                <option value="<%= notification.status %>"> <%= notification.status %> </option>
+                <option value="issue" > Issue</option>
+                <option value="intermittent"> Intermittent</option>
+                <option value="resolved"> Resolved </option>
+                <option value="general"> General</option>
+              </select> 
+          </div>
+          <br>
+        <button type="submit"> update</button>
+    </form> 
+    <br><br>
+<style>
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+    .formStyle {
+        width: 550px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        border-top: 5px solid #109c8f;
+        margin: 0 auto;
+        margin-top: 10%
+    }
+    
+    .formStyle h1 {
+        text-align: center;
+        color: #000;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    
+    .formStyle  input {
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-family: Montserrat;
+        padding: 0 20px 0 50px;
+        outline: none;
+    }
+    
+    .formStyle label { 
+        width: 100%;
+        height: 40px;
+        color:#109c8f;
+        text-transform: uppercase;
+        font-family: Montserrat;
+    }
+    
+    .formStyle button { 
+        width: 100%;
+        height: 40px;
+        background: #109c8f;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #46C7C7;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-family: Montserrat;
+        outline: none;
+        cursor: pointer;
+    }
+    
+    .formStyle button:hover {
+        background: #3CBDBD;
+    }
+
+/*Nav Bar*/
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+position: relative;
+width: 36px;
+font-size: 24px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+font-size: 0.75rem;
+position: absolute;
+right: 0;
+font-family: sans-serif;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+top: 3px;
+line-height: 12px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+top: -10px;
+}
+
+@media (min-width: 576px) {
+.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+}
+
+.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+    top: -7px;
+}
+}
+
+@media (min-width: 768px) {
+.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+}
+
+.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+    top: -7px;
+}
+}
+
+@media (min-width: 992px) {
+.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+}
+
+.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+    top: -7px;
+}
+}
+
+@media (min-width: 1200px) {
+.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+    text-align: center;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+    display: block;
+    width: 48px;
+    margin: 2px auto 4px auto;
+    top: 0;
+    line-height: 24px;
+}
+.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+    top: -7px;
+}
+}
+</style>
