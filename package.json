@@ -15,7 +15,7 @@
     "got": "^8.3.2",
     "include-all": "^1.0.0",
     "joi": "^13.2.0",
-    "jsonwebtoken": "^7.4.3",
+    "jsonwebtoken": "^9.0.0",
     "loadash": "^1.0.0",
     "nodemailer": "^4.4.0",
     "rc": "1.0.1",
